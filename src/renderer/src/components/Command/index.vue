@@ -11,12 +11,14 @@
   import { save } from '@renderer/utils/file'
   import useStore from '@renderer/store'
 
+  import logo from '/favicon.ico'
+
   const globalStore = useStore().global;
   const emit = defineEmits(['onclose']);
 
   const appData = inject('appData');
   const command = cmd.create({
-    logo:'/favicon.ico',
+    logo:logo,
     title:'系统设置'
   })
 

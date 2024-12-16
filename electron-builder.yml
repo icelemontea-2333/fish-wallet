@@ -1,5 +1,5 @@
 appId: com.electron.app
-productName: 小钱钱~
+productName: fish-wallet
 directories:
   buildResources: build
 files:
@@ -11,7 +11,7 @@ files:
 asarUnpack:
   - resources/**
 win:
-  executableName: 小钱钱~
+  executableName: fish-wallet
   # 配置图标
   icon: build/icon.ico
 nsis:

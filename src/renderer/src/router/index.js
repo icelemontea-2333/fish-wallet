@@ -1,5 +1,5 @@
 //配置路由的地方
-import { createRouter,createWebHistory } from 'vue-router'
+import { createRouter,createWebHashHistory } from 'vue-router'
 
 const showMenu = {
 
@@ -48,7 +48,7 @@ const routes = [
 //创建路由实例并传递routes配置
 //注意：url中不带#
 const router = createRouter({
-    history:createWebHistory(),
+    history:createWebHashHistory(),
     routes,
 })
 

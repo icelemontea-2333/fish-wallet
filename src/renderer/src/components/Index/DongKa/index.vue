@@ -25,6 +25,9 @@
     import { fishNeko } from 'fish-neko'
     import { compute } from '@renderer/utils/compute-unit'
     import useStore from '@renderer/store'
+    
+    import imageDong from '/images/dong-ka/dong.png'
+    import imageKa from '/images/dong-ka/ka.png'
 
     const globalStore = useStore().global;
     const appData = inject('appData');
@@ -42,10 +45,10 @@
                         const rd = Math.random() * 2;
                         if(rd < 1){
                             dongKaData.dongKaType = 0;
-                            self.setSrc('/images/dong-ka/dong.png')
+                            self.setSrc(imageDong);
                         }else{
                             dongKaData.dongKaType = 1;
-                            self.setSrc('/images/dong-ka/ka.png')
+                            self.setSrc(imageKa);
                         }
                         self.value.style.right = `${(Math.random() * 50 + 15) * fishNeko.proportion(16)}px`
                     })
