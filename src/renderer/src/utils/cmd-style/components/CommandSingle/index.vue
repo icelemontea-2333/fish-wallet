@@ -60,7 +60,7 @@
 </template>
 
 <script setup>
-    import { ref,reactive,onMounted,onBeforeUnmount,inject,watchEffect,defineEmits } from 'vue'
+    import { ref,reactive,onMounted,onBeforeUnmount,inject,watchEffect } from 'vue'
     import { utils,config,cmd,proxyTransfer } from '../../index.js'
 
     import md5 from '../../utils/md5/md5.js'

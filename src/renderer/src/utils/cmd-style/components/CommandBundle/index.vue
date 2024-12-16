@@ -73,7 +73,7 @@
 </template>
 
 <script setup>
-    import { ref,reactive,onMounted,onBeforeUnmount,inject,watchEffect,defineEmits } from 'vue'
+    import { ref,reactive,onMounted,onBeforeUnmount,inject,watchEffect } from 'vue'
     import { useRoute,useRouter } from 'vue-router'
     import { utils,config,cmd,proxyTransfer } from '../../index.js'
 
