@@ -2,10 +2,16 @@
     <div class="record-container">
         <section class="record-panel u-s-t-n">
             <div class="record-item">
-                <span>金币(总)：{{ globalStore.global.accumulatedCoin.toFixed(3) }}</span>
+                <span>金币：{{ globalStore.global.accumulatedCoin.toFixed(3) }}</span>
             </div>
             <div class="record-item">
-                <span>喵喵币(总)：{{ globalStore.global.nekoCoin }}</span>
+                <span>总计金币：{{ Math.ceil(globalStore.global.accumulatedCoinRecord) }}</span>
+            </div>
+            <div class="record-item">
+                <span>喵喵币：{{ globalStore.global.nekoCoin }}</span>
+            </div>
+            <div class="record-item">
+                <span>总计喵喵币：{{ globalStore.global.nekoCoinRecord }}</span>
             </div>
         </section>
     </div>

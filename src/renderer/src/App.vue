@@ -81,6 +81,26 @@
   //注入appdata
   provide('appData',appData)
 
+  //加载存档
+  onMounted(async ()=>{
+    if(window.api.loadConfig != null){
+      const content = await window.api.loadConfig();
+      const global = load(content);
+      globalStore.global.updateTime = new Date().getTime()
+      if(global != false){
+        globalStore.global.coin = global.coin ?? globalStore.global.coin
+        globalStore.global.accumulatedCoin = global.accumulatedCoin ?? globalStore.global.accumulatedCoin
+        globalStore.global.accumulatedCoinRecord = global.accumulatedCoinRecord ?? globalStore.global.accumulatedCoinRecord
+        globalStore.global.nekoCoin = global.nekoCoin ?? globalStore.global.nekoCoin
+        globalStore.global.nekoCoinRecord = global.nekoCoinRecord ?? globalStore.global.nekoCoinRecord
+        globalStore.global.type = global.type ?? globalStore.global.type
+        globalStore.global.item = global.item ?? globalStore.global.item
+        globalStore.global.day = global.day ?? globalStore.global.day
+        globalStore.global.hour = global.hour ?? globalStore.global.hour
+      }
+    }
+  })
+  
   //注册键盘事件
   onMounted(()=>{
     window.api.onkeydownKeyboard((_event, value)=>{
@@ -88,6 +108,7 @@
         if(!appData.event.isKeyDown){
           const nekoCoin = 1
           globalStore.global.nekoCoin += nekoCoin;
+          globalStore.global.nekoCoinRecord += nekoCoin;
           const nekoCoinEvent = {
             nekoCoin
           }
@@ -143,6 +164,7 @@
     }
     globalStore.global.updateTime = new Date().getTime();
     globalStore.global.accumulatedCoin += coin;
+    globalStore.global.accumulatedCoinRecord += coin;
     setTimeout(() => {
       saveFile();
     }, 1000);
@@ -192,24 +214,6 @@
   function showMenu(){
     appData.isShowMenu = appData.isShowMenu ? false : true
   }
-
-  //加载存档
-  onMounted(async ()=>{
-    if(window.api.loadConfig != null){
-      const content = await window.api.loadConfig();
-      const global = load(content);
-      globalStore.global.updateTime = new Date().getTime()
-      if(global != false){
-        globalStore.global.coin = global.coin ?? globalStore.global.coin
-        globalStore.global.accumulatedCoin = global.accumulatedCoin ?? globalStore.global.accumulatedCoin
-        globalStore.global.day = global.day ?? globalStore.global.day
-        globalStore.global.hour = global.hour ?? globalStore.global.hour
-        globalStore.global.nekoCoin = global.nekoCoin ?? globalStore.global.nekoCoin
-        globalStore.global.type = global.type ?? globalStore.global.type
-        globalStore.global.item = global.item ?? globalStore.global.item
-      }
-    }
-  })
 
   //窗口拖拽
   const winDrag = reactive({

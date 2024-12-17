@@ -11,18 +11,22 @@ const useGlobal = defineStore('global',()=>{
             coin:10000,
             //累计金币
             accumulatedCoin:0,
-            //天/周（默认30天）
-            day:5,
-            //小时/天
-            hour:8,
+            //累计金币记录
+            accumulatedCoinRecord:0,
             //喵喵币
             nekoCoin:0,
+            //喵喵币记录
+            nekoCoinRecord:0,
             //皮肤类型
             type:0,
             //包裹
             item:{
                 taiko:false
-            }
+            },
+            //天/周（默认30天）
+            day:5,
+            //小时/天
+            hour:8
         }
     )
 

@@ -34,7 +34,8 @@
 
     const dongKaData = reactive({
         dongKaType:0,
-        idleTimer:null
+        idleTimer:null,
+        volume:0.2
     })
 
     onMounted(()=>{
@@ -43,10 +44,16 @@
                 fishNeko.fishNeko().$(
                     fishNeko.$("dong-ka-pop u-s-t-n","img").$((self)=>{
                         const rd = Math.random() * 2;
-                        if(rd < 1){
+                        if(rd < 1.35){
+                            const sound = new Audio("/audios/dong-ka/dong.mp3");
+                            sound.volume = dongKaData.volume;
+                            sound.play();
                             dongKaData.dongKaType = 0;
                             self.setSrc(imageDong);
                         }else{
+                            const sound = new Audio("/audios/dong-ka/ka.mp3");
+                            sound.volume = dongKaData.volume;
+                            sound.play();
                             dongKaData.dongKaType = 1;
                             self.setSrc(imageKa);
                         }
