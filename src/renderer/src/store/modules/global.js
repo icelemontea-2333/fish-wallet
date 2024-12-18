@@ -35,6 +35,8 @@ const useGlobal = defineStore('global',()=>{
         onkeydown:null,
         //无间隔 可接收第三个event参数（nekoCoin增加事件）
         onanykeydown:null,
+        //无间隔 可持续触发
+        oncontinuekeydown:null,
         //无间隔
         onkeyup:null,
     })

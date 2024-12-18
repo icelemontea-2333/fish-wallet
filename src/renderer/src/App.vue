@@ -86,10 +86,23 @@
     if(window.api.loadConfig != null){
       const content = await window.api.loadConfig();
       const global = load(content);
-      globalStore.global.updateTime = new Date().getTime()
       if(global != false){
+        const today = new Date()
+        today.setHours(0)
+        today.setMinutes(0)
+        today.setSeconds(0)
+        today.setMilliseconds(0)
+        if(global.updateTime == null || today.getTime() > global.updateTime){
+          globalStore.global.updateTime = new Date().getTime()
+          //Coin Today
+          globalStore.global.accumulatedCoin = 0
+        }else{
+          globalStore.global.updateTime = global.updateTime
+          //Coin Today
+          globalStore.global.accumulatedCoin = global.accumulatedCoin ?? globalStore.global.accumulatedCoin
+        }
         globalStore.global.coin = global.coin ?? globalStore.global.coin
-        globalStore.global.accumulatedCoin = global.accumulatedCoin ?? globalStore.global.accumulatedCoin
+        //Coin Total
         globalStore.global.accumulatedCoinRecord = global.accumulatedCoinRecord ?? globalStore.global.accumulatedCoinRecord
         globalStore.global.nekoCoin = global.nekoCoin ?? globalStore.global.nekoCoin
         globalStore.global.nekoCoinRecord = global.nekoCoinRecord ?? globalStore.global.nekoCoinRecord
@@ -104,6 +117,11 @@
   //注册键盘事件
   onMounted(()=>{
     window.api.onkeydownKeyboard((_event, value)=>{
+      try{
+        globalStore.event.oncontinuekeydown(_event, value)
+      }catch{
+
+      }
       try{
         if(!appData.event.isKeyDown){
           const nekoCoin = 1
