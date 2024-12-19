@@ -74,22 +74,22 @@
         globalStore.event.oncontinuekeydown = (_event, value, event) => {
             fishNeko.$().$(
                 fishNeko.fishNeko().$(
-                    fishNeko.$("dong-ka-pop u-s-t-n","img").$((self)=>{
+                    fishNeko.$("dong-ka-pop u-s-t-n","img").$(($)=>{
                         const rd = Math.random();
                         if(rd < dongKaData.weight){
                             const sound = new Audio(audioDong);
                             sound.volume = dongKaData.volume;
                             sound.play();
                             dongKaData.dongKaType = 0;
-                            self.setSrc(imageDong);
+                            $.setSrc(imageDong);
                         }else{
                             const sound = new Audio(audioKa);
                             sound.volume = dongKaData.volume;
                             sound.play();
                             dongKaData.dongKaType = 1;
-                            self.setSrc(imageKa);
+                            $.setSrc(imageKa);
                         }
-                        self.value.style.right = `${(Math.random() * 50 + 15) * fishNeko.proportion(16)}px`
+                        $.value.style.right = `${(Math.random() * 50 + 15) * fishNeko.proportion(16)}px`
                     })
                 ).destroy(4000)
             )
