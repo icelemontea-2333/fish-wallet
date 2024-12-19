@@ -56,13 +56,16 @@
     import imageDong from '/images/dong-ka/dong.png'
     import imageKa from '/images/dong-ka/ka.png'
 
+    import audioDong from '/audios/dong-ka/dong.mp3'
+    import audioKa from '/audios/dong-ka/ka.mp3'
+
     const globalStore = useStore().global;
     const appData = inject('appData');
 
     const dongKaData = reactive({
         dongKaType:0,
         idleTimer:null,
-        volume:0.1,
+        volume:0.15,
         //敲击时更偏侧于dong的权重
         weight:0.5
     })
@@ -74,13 +77,13 @@
                     fishNeko.$("dong-ka-pop u-s-t-n","img").$((self)=>{
                         const rd = Math.random();
                         if(rd < dongKaData.weight){
-                            const sound = new Audio("/audios/dong-ka/dong.mp3");
+                            const sound = new Audio(audioDong);
                             sound.volume = dongKaData.volume;
                             sound.play();
                             dongKaData.dongKaType = 0;
                             self.setSrc(imageDong);
                         }else{
-                            const sound = new Audio("/audios/dong-ka/ka.mp3");
+                            const sound = new Audio(audioKa);
                             sound.volume = dongKaData.volume;
                             sound.play();
                             dongKaData.dongKaType = 1;
